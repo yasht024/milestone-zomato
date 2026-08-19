@@ -26,12 +26,32 @@ logger = logging.getLogger("api")
 
 app = FastAPI(title="Zomato Restaurant Recommendation API", version="1.0")
 
+# ──────────────────────────────────────────────
+# CORS Configuration (Phase 3 - Security & Deployment)
+# ──────────────────────────────────────────────
+raw_origins = os.getenv("ALLOWED_ORIGINS", "").strip()
+if raw_origins == "*":
+    allowed_origins = ["*"]
+    origin_regex = None
+elif raw_origins:
+    allowed_origins = [o.strip() for o in raw_origins.split(",") if o.strip()]
+    origin_regex = r"https://.*\.vercel\.app"
+else:
+    # Default to localhost and any Vercel deployment preview / production domain
+    allowed_origins = [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:8000",
+    ]
+    origin_regex = r"https://.*\.vercel\.app"
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows all origins, adjust for production
+    allow_origins=allowed_origins,
+    allow_origin_regex=origin_regex,
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all methods
-    allow_headers=["*"],  # Allows all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 @app.get("/")
