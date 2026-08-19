@@ -66,7 +66,7 @@ Ensure all your files (including `zomato.db` and `requirements.txt`) are committ
 2. Go to **"Settings"**:
    - Under **Build & Deploy** ➔ **Custom Start Command**, enter:
      ```bash
-     uvicorn main:app --app-dir src --host 0.0.0.0 --port $PORT
+     sh -c "uvicorn main:app --app-dir src --host 0.0.0.0 --port ${PORT:-8000}"
      ```
 3. Under **Networking** ➔ Click **"Generate Domain"** (e.g., `https://zomato-ai-backend.up.railway.app`).
 
