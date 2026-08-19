@@ -1,0 +1,11 @@
+# Ignore backend files during Vercel frontend build
+src/
+*.py
+*.db
+*.parquet
+requirements.txt
+Dockerfile
+Procfile
+railway.json
+venv/
+.pytest_cache/
