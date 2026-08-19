@@ -1,0 +1,7 @@
+pandas
+datasets
+fastapi
+sqlalchemy
+uvicorn
+groq
+python-dotenv

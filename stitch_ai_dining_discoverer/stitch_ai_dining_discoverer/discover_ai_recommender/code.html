@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Discover - MidnightCrave</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#b9c8de",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#b9c8de",
+                        "surface-dim": "#0b1326",
+                        "secondary": "#c4c7c9",
+                        "inverse-primary": "#bb162c",
+                        "inverse-surface": "#dae2fd",
+                        "on-tertiary": "#233143",
+                        "on-secondary-fixed": "#191c1e",
+                        "on-tertiary-fixed-variant": "#39485a",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#131b2e",
+                        "tertiary-container": "#8392a6",
+                        "on-primary": "#680011",
+                        "on-tertiary-container": "#1c2b3c",
+                        "surface-tint": "#ffb3b1",
+                        "background": "#0b1326",
+                        "on-tertiary-fixed": "#0d1c2d",
+                        "surface-variant": "#2d3449",
+                        "primary-container": "#ff535a",
+                        "surface-container-lowest": "#060e20",
+                        "outline-variant": "#5b403f",
+                        "tertiary-fixed": "#d4e4fa",
+                        "primary-fixed-dim": "#ffb3b1",
+                        "secondary-container": "#464a4b",
+                        "on-primary-fixed": "#410007",
+                        "secondary-fixed-dim": "#c4c7c9",
+                        "on-primary-fixed-variant": "#92001c",
+                        "primary-fixed": "#ffdad8",
+                        "secondary-fixed": "#e0e3e5",
+                        "primary": "#ffb3b1",
+                        "on-secondary-container": "#b6b9bb",
+                        "surface-bright": "#31394d",
+                        "surface": "#0b1326",
+                        "on-error": "#690005",
+                        "on-primary-container": "#5b000e",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#dae2fd",
+                        "outline": "#ab8987",
+                        "on-secondary-fixed-variant": "#444749",
+                        "surface-container-high": "#222a3d",
+                        "on-secondary": "#2d3133",
+                        "surface-container": "#171f33",
+                        "on-surface-variant": "#e4bebc",
+                        "surface-container-highest": "#2d3449",
+                        "on-background": "#dae2fd",
+                        "inverse-on-surface": "#283044"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "48px",
+                        "margin-desktop": "40px",
+                        "container-max": "1200px",
+                        "stack-sm": "12px",
+                        "gutter": "24px",
+                        "stack-md": "24px",
+                        "margin-mobile": "20px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Outfit"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Outfit"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Outfit"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Outfit"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(45, 52, 73, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .ai-border-glow {
+            box-shadow: 0 0 20px rgba(255, 83, 90, 0.2);
+            border: 1px solid rgba(255, 83, 90, 0.4);
+        }
+        .ai-gradient-text {
+            background: linear-gradient(90deg, #ffb3b1, #ff535a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .custom-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ff535a;
+            cursor: pointer;
+            border: 2px solid #0b1326;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen relative overflow-x-hidden">
+<!-- Ambient Background -->
+<div class="fixed inset-0 z-[-1] opacity-50">
+<!-- STITCH_SHADER_START:ANIMATION_3 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_3" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_3');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+
+void main() {
+    vec2 uv = v_texCoord;
+    
+    // Slow flowing gradient background
+    vec3 color1 = vec3(0.04, 0.07, 0.15); // Slate-950
+    vec3 color2 = vec3(0.12, 0.16, 0.25); // Slate-900
+    vec3 accent = vec3(0.89, 0.22, 0.27); // Zomato Red (#E23744)
+    
+    float noise = sin(uv.x * 3.0 + u_time * 0.2) * cos(uv.y * 3.0 - u_time * 0.3);
+    vec3 base = mix(color1, color2, uv.y + noise * 0.2);
+    
+    // Ambient red glow in top left
+    float glow = smoothstep(0.8, 0.0, length(uv - vec2(0.1, 0.9 + sin(u_time * 0.5) * 0.1)));
+    vec3 finalColor = mix(base, accent, glow * 0.15);
+    
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_3 -->
+</div>
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 md:px-10 bg-surface/70 backdrop-blur-xl border-b border-white/10">
+<div class="flex items-center gap-3">
+<img alt="MidnightCrave Logo" class="h-8 w-8 object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVl3EYrNYMLLytPdXLVOH-yMyQESr77tIroKSxCAintOOeoIssqebWx_4Eu2m3VzTVyCgplqFzyGG1xOgXcfY6RqCFYjyuQkRMKYbA4qSfxsZDKIGU3YCw3N94ZeRSUAtAfHHdtxVFl_fV0ScE7kMPnWcH8ZK3qXUZiu6K-ri3GEg6a_WJ8agvm3URsgAEMJgA3PkaskmPnqpX30QdSBL2euAnBRry_4zQfF7vSMVf74kPjAvCkbMe"/>
+<h1 class="text-headline-md font-headline-md tracking-tight text-primary">MidnightCrave</h1>
+</div>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-primary font-bold text-label-md font-label-md hover:opacity-80 transition-opacity" href="#">Discover</a>
+<a class="text-on-surface-variant text-label-md font-label-md hover:opacity-80 transition-opacity" href="#">Saved</a>
+<a class="text-on-surface-variant text-label-md font-label-md hover:opacity-80 transition-opacity" href="#">Reservations</a>
+<div class="h-8 w-8 rounded-full bg-surface-variant flex items-center justify-center border border-white/10 ml-4">
+<span class="material-symbols-outlined text-on-surface text-sm">person</span>
+</div>
+</nav>
+</header>
+<!-- Main Content -->
+<main class="pt-[100px] pb-[100px] md:pb-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto flex flex-col items-center gap-stack-lg min-h-screen">
+<!-- Hero Section -->
+<div class="text-center mt-8 md:mt-12 flex flex-col gap-stack-sm">
+<h2 class="text-display-lg font-display-lg text-on-surface drop-shadow-lg">Discover Your Next Meal</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mx-auto">Let our AI curate the perfect late-night dining experience tailored entirely to your cravings.</p>
+</div>
+<!-- Search Card -->
+<div class="glass-card w-full max-w-3xl rounded-2xl p-6 md:p-8 flex flex-col gap-stack-md transition-all duration-300 hover:translate-y-[-4px]">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Location -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Location</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">location_on</span>
+<input class="w-full bg-surface-container/50 border border-white/10 rounded-lg py-3 pl-10 pr-4 text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Current Location" type="text"/>
+</div>
+</div>
+<!-- Cuisine -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Cuisine (Optional)</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">restaurant</span>
+<input class="w-full bg-surface-container/50 border border-white/10 rounded-lg py-3 pl-10 pr-4 text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="e.g. Japanese, Italian" type="text"/>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
+<!-- Budget -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Budget</label>
+<div class="flex rounded-lg overflow-hidden border border-white/10 bg-surface-container/50 p-1 gap-1">
+<button class="flex-1 py-2 text-label-md font-label-md rounded-md bg-surface-variant text-on-surface transition-colors">Low</button>
+<button class="flex-1 py-2 text-label-md font-label-md rounded-md hover:bg-surface-variant/50 text-on-surface-variant transition-colors">Mid</button>
+<button class="flex-1 py-2 text-label-md font-label-md rounded-md hover:bg-surface-variant/50 text-on-surface-variant transition-colors">High</button>
+</div>
+</div>
+<!-- Rating -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between">
+<label class="text-label-md font-label-md text-on-surface-variant">Minimum Rating</label>
+<span class="text-label-md font-label-md text-primary">4.0+</span>
+</div>
+<input class="w-full h-2 bg-surface-variant rounded-lg appearance-none cursor-pointer custom-range mt-2" max="5" min="0" step="0.1" type="range" value="4.0"/>
+</div>
+</div>
+<!-- AI Prompt -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">auto_awesome</span>
+                    Soft Preferences
+                </label>
+<textarea class="w-full bg-surface-container/50 border border-white/10 rounded-lg p-4 text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none" placeholder="Describe the vibe... e.g. 'Dimly lit romantic spot with great cocktails and quiet jazz.'" rows="3"></textarea>
+</div>
+<!-- Submit -->
+<button class="w-full py-4 mt-2 bg-primary-container text-on-primary-container rounded-full text-label-md font-label-md font-bold relative overflow-hidden group transition-all hover:scale-[1.02]" id="searchBtn">
+<div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                Find Restaurants
+            </button>
+</div>
+<!-- Results Section -->
+<div class="w-full max-w-5xl flex flex-col gap-stack-md" id="resultsSection">
+<!-- Empty State -->
+<div class="flex flex-col items-center justify-center py-20 text-center gap-4 opacity-70">
+<span class="material-symbols-outlined text-6xl text-surface-variant">search_insights</span>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Tell us what you're craving...</p>
+</div>
+<!-- Loading State (Hidden by default) -->
+<div class="hidden grid grid-cols-1 md:grid-cols-2 gap-6 w-full" id="loadingState">
+<div class="glass-card h-80 rounded-2xl animate-pulse"></div>
+<div class="glass-card h-80 rounded-2xl animate-pulse"></div>
+</div>
+<!-- Actual Results (Hidden by default) -->
+<div class="hidden grid grid-cols-1 md:grid-cols-2 gap-6 w-full" id="resultsGrid">
+<!-- Result Card 1 -->
+<div class="glass-card rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:translate-y-[-4px] ai-border-glow">
+<div class="h-48 relative w-full">
+<div class="w-full h-full bg-cover bg-center" data-alt="High quality food photography of a dimly lit, high-end sushi bar setup. Dark sleek wood, vibrant fresh sashimi, soft warm spot lighting contrasting with deep obsidian background. Premium minimal aesthetic, red accents." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDf1JjZPgv9xxx7wkXF-9FpEoAQhipUjn8yZ5JVitPocY3PFbatxnOiOK6ZV5uIPpqKKw0RGq4axHF8soPGQ_MxkMjN0W8CZFOFsQNG4wUB7wtDL4M2-5hY1sIqZjWigOae_SzFjcT000K3E35VpgvM_u12W-nTwMBleHF0NUX530I-dsftmWVE5KRuxw0h3JmnCYa_NWQVrOClLy31KmbUhaPZ7hnUz29o8BRjcDzAeo4QKd6zdtWU')"></div>
+<div class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1 border border-white/10">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm text-on-surface font-bold">4.8</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-4">
+<div class="flex flex-col gap-1">
+<h3 class="text-headline-md font-headline-md text-on-surface">Midnight Omakase</h3>
+<div class="flex items-center gap-2 text-on-surface-variant text-label-sm font-label-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">location_on</span> Downtown</span>
+<span>•</span>
+<span>$$$</span>
+<span>•</span>
+<span class="bg-primary/20 text-primary px-2 py-0.5 rounded-full">Japanese</span>
+</div>
+</div>
+<div class="bg-surface-container/50 border border-primary/20 rounded-lg p-4 flex gap-3">
+<span class="material-symbols-outlined text-primary mt-0.5">auto_awesome</span>
+<p class="text-label-md font-label-md text-on-surface-variant leading-relaxed">Perfectly matches your vibe. Dim lighting, exclusive feel, and exceptional late-night sake pairings.</p>
+</div>
+</div>
+</div>
+<!-- Result Card 2 -->
+<div class="glass-card rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:translate-y-[-4px]">
+<div class="h-48 relative w-full">
+<div class="w-full h-full bg-cover bg-center" data-alt="High quality photography of a modern tapas plate in a moody, upscale lounge. Dark slate table, vibrant red peppers and rich meats, illuminated by a single warm spotlight. Premium late-night atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBa8rLt2V4mHwdlfsM8jFT6-mdkUss6FAKzQOsZN1rtuXHNPjiRzY4aPw7fp6HCPIq284tJ5sRgoBI50LWeu_gic2invV3cxAYuuxZJiKAuUHytEpm8xXJR6YfS3RXJjiRzwumvBLOmQCcAY2gj_LUrw-467JE0kgNAmPtavodUfYM96l5VO82F_sn_NgRAxtwPtlwNQU1Xpw3ji4bUSVYjIAhMg8kw20LCIbkdnmlDdAbCQE07-gUP')"></div>
+<div class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1 border border-white/10">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm text-on-surface font-bold">4.6</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-4">
+<div class="flex flex-col gap-1">
+<h3 class="text-headline-md font-headline-md text-on-surface">The Crimson Lounge</h3>
+<div class="flex items-center gap-2 text-on-surface-variant text-label-sm font-label-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">location_on</span> Westside</span>
+<span>•</span>
+<span>$$</span>
+<span>•</span>
+<span class="bg-primary/20 text-primary px-2 py-0.5 rounded-full">Tapas</span>
+</div>
+</div>
+<div class="bg-surface-container/50 border border-white/5 rounded-lg p-4 flex gap-3">
+<span class="material-symbols-outlined text-tertiary mt-0.5">info</span>
+<p class="text-label-md font-label-md text-on-surface-variant leading-relaxed">Great alternative for a slightly more energetic atmosphere with excellent small plates.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 md:hidden bg-surface/80 backdrop-blur-2xl rounded-t-xl border-t border-white/10 shadow-2xl">
+<div class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-xl p-2 scale-90 duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="text-label-sm font-label-sm mt-1">Discover</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="text-label-sm font-label-sm mt-1">Saved</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">event_upcoming</span>
+<span class="text-label-sm font-label-sm mt-1">Reservations</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-sm font-label-sm mt-1">Profile</span>
+</div>
+</nav>
+<script>
+        // Simple interaction script to simulate loading state
+        document.getElementById('searchBtn').addEventListener('click', function() {
+            const resultsSection = document.getElementById('resultsSection');
+            const loadingState = document.getElementById('loadingState');
+            const resultsGrid = document.getElementById('resultsGrid');
+            const emptyState = resultsSection.querySelector('.flex-col.items-center.justify-center');
+
+            // Hide empty state
+            if(emptyState) emptyState.style.display = 'none';
+            
+            // Show loading
+            loadingState.classList.remove('hidden');
+            resultsGrid.classList.add('hidden');
+
+            // Simulate network request
+            setTimeout(() => {
+                loadingState.classList.add('hidden');
+                resultsGrid.classList.remove('hidden');
+            }, 1500);
+        });
+    </script>
+</body></html>
