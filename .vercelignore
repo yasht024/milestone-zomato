@@ -1,5 +1,5 @@
-# Ignore backend files during Vercel frontend build
-src/
+# Ignore backend-only files during Vercel frontend build
+/src/
 *.py
 *.db
 *.parquet
@@ -7,5 +7,7 @@ requirements.txt
 Dockerfile
 Procfile
 railway.json
-venv/
-.pytest_cache/
+/venv/
+/.pytest_cache/
+/stitch_ai_dining_discoverer/
+/verify_deployment.py
