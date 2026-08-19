@@ -11,7 +11,12 @@ def get_groq_client():
     api_key = os.environ.get("GROQ_API_KEY")
     if not api_key:
         logger.warning("GROQ_API_KEY is not set in environment variables.")
-    return Groq(api_key=api_key)
+        return None
+    try:
+        return Groq(api_key=api_key)
+    except Exception as e:
+        logger.error("Failed to initialize Groq client: %s", e)
+        return None
 
 # Maximum number of retry attempts when JSON parsing fails
 MAX_RETRIES = 2
@@ -90,8 +95,12 @@ def get_ai_recommendations(user_preferences: str, restaurants: List[Dict]) -> Li
     if not restaurants:
         return []
 
-    user_prompt = _build_user_prompt(user_preferences, restaurants)
     client = get_groq_client()
+    if client is None:
+        logger.warning("Groq client is not available. Falling back to pre-filtered DB results.")
+        return []
+
+    user_prompt = _build_user_prompt(user_preferences, restaurants)
 
     for attempt in range(1, MAX_RETRIES + 1):
         try:

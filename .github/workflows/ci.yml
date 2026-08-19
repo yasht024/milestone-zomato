@@ -26,6 +26,8 @@ jobs:
           pip install -r requirements.txt pytest httpx
 
       - name: Run Backend Pytest Suite
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
           pytest src/test_api.py src/test_deployment.py -v
 
