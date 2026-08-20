@@ -74,7 +74,7 @@ export default function SearchForm({ onSearch, isLoading }: SearchFormProps) {
 
   // Fetch dynamic options from backend if available
   useEffect(() => {
-    const apiBase = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").replace(/\/$/, "");
+    const apiBase = (process.env.NEXT_PUBLIC_API_URL || "https://milestone-zomato-production.up.railway.app").replace(/\/$/, "");
     fetch(`${apiBase}/options`)
       .then((res) => res.json())
       .then((data) => {
