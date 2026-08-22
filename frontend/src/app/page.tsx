@@ -25,7 +25,7 @@ export default function Home() {
       if (data.cuisine.trim()) payload.cuisine = data.cuisine.trim();
       if (data.soft_preferences.trim()) payload.soft_preferences = data.soft_preferences.trim();
 
-      const apiBase = (process.env.NEXT_PUBLIC_API_URL || "https://milestone-zomato-production.up.railway.app").replace(/\/$/, "");
+      const apiBase = (process.env.NEXT_PUBLIC_API_URL || "https://milestone-zomato-production-c6e5.up.railway.app").replace(/\/$/, "");
       const response = await fetch(`${apiBase}/recommend`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
